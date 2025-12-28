@@ -1,0 +1,53 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+	<div class="row">
+		<a href="/admin/posts/create" class="btn btn-secondary">Add new post</a>
+		<a href="/admin/categories/create" class="btn btn-secondary">Add new category</a>
+		<table>
+			<thead>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+				{% for post in posts %}
+					<tr>
+						<td>{{ post.id }}</td>
+						<td>{{ post.title }}</td>
+						<td>
+							<a href="/admin/posts/edit/{{ post.id }}">Edit</a>
+						</td>
+						<td>
+							<a href="/admin/posts/delete/{{ post.id }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<table>
+			<thead>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+					<tr>
+						<td>{{ category.id }}</td>
+						<td>{{ category.name }}</td>
+						<td>
+							<a href="/admin/posts/edit/{{ category.id }}">Edit</a>
+						</td>
+						<td>
+							<a href="/admin/posts/delete/{{ category.id }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

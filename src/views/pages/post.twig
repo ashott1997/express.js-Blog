@@ -1,0 +1,70 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+	<main class="row content__page">
+
+		<article class="column large-full entry format-standard">
+
+			<div class="media-wrap entry__media">
+				<div class="entry__post-thumb">
+					<img src="{{ post.thumbnail }}">
+				</div>
+			</div>
+
+			<div class="content__page-header entry__header">
+				<h1 class="display-1 entry__title">{{ post.title }}</h1>
+				<ul class="entry__header-meta">
+					<li class="author">By
+						<a href="#0">Jonathan Doe</a>
+					</li>
+					<li class="date">{{ post.date }}</li>
+					<li class="cat-links">
+						<a href="#0">Marketing</a>
+						<a href="#0">Management</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="entry__content">{{ post.body }}</div>
+
+		</article>
+
+		<div class="comment-wrap w-100">
+			<div id="comments" class="column large-12">
+
+				<h3 class="h2">5 Comments</h3>
+				<ol class="commentlist">
+					{% for comment in comments %}
+						<li>
+							<div class="comment__content">
+								<div class="comment__info">
+									<div class="comment__author">{{ comment.author }}</div>
+								</div>
+								<div class="comment__text">
+									<p>{{ comment.body }}</p>
+								</div>
+							</div>
+						</li>
+					{% endfor %}
+				</ol>
+			</div>
+			<div class="column large-12 comment-respond">
+				<div id="respond">
+					<h3 class="h2">Add Comment</h3>
+					<form name="contactForm" id="contactForm" method="POST" action="/post/{{ post.id }}/comment-store" autocomplete="off">
+						<fieldset>
+							<div class="form-field">
+								<input name="author" id="cName" class="full-width" placeholder="Your Name" value="" type="text">
+							</div>
+							<div class="message form-field">
+								<textarea name="body" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+							</div>
+							<input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Add Comment" type="submit">
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

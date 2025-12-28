@@ -1,0 +1,22 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+	<div class="row">
+		<a href="/admin" class="btn">Back to admin</a>
+		{% if errors %}
+			<ul>
+				{% for err in errors %}
+					<li>{{ err.msg }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		<form action="/admin/categories/store" method="POST" class="w-100">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<button class="btn w-100">Store</button>
+		</form>
+	</div>
+{% endblock %}

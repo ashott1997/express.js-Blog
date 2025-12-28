@@ -1,0 +1,38 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+	<div class="row">
+		<a href="/admin" class="btn">Back to admin</a>
+		{% if errors %}
+			<ul>
+				{% for err in errors %}
+					<li>{{ err.msg }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		<form action="/admin/posts/store" method="POST" class="w-100" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" class="form-control" name="title">
+			</div>
+			<div class="form-group">
+				<label for="body">Body</label>
+				<textarea name="body" id="body" class="form-control"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="thumbnail">Thumbnail</label>
+				<input type="file" class="form-control" name="thumbnail">
+			</div>
+			<div class="form-group w-100">
+				<label for="category">Category</label>
+				<select name="category" id="category" class="w-100">
+					{% for category in categories %}
+						<option value="{{ category.id }}">{{ category.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button class="btn w-100">Store</button>
+		</form>
+	</div>
+{% endblock %}

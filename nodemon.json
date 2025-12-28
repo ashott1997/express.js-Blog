@@ -1,0 +1,6 @@
+{
+  "watch": ["views", "routes", "bin", "app.js"],
+  "ext": "js,twig,json",
+  "ignore": ["node_modules", "public"],
+  "delay": "500"
+}

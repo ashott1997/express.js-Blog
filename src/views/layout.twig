@@ -1,0 +1,171 @@
+<html class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded" lang="en" data-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" style="">
+	<head>
+		<meta charset="utf-8">
+		<title>Express.js Blog</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/css/base.css">
+		<link rel="stylesheet" href="/css/vendor.css">
+		<link
+		rel="stylesheet" href="/css/main.css">
+		 <script src="js/modernizr.js"></script>
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+	</head>
+
+	<body>
+		<div id="preloader" style="display: none;">
+			<div id="loader" class="dots-fade" style="display: none;">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+
+		<div id="top" class="s-wrap site-wrapper">
+			<header class="s-header">
+
+				<div class="header__top">
+					<div class="header__logo">
+						<a class="site-logo" href="/">
+							Express Blog
+						</a>
+					</div>
+				</div>
+				<!-- end header__top -->
+
+				<nav class="header__nav-wrap">
+
+					<ul class="header__nav">
+						{% for cat in sideBarCategories %}
+							<li>
+								<a href="/category/{{ cat.id }}" title="">{{ cat.name }}</a>
+							</li>
+						{% endfor %}
+
+					</ul>
+
+				</nav>
+
+				<a href="/registration" class="btn">Sign up</a>
+				<a href="/login" class="btn">Sign in</a>
+
+				<a href="#0" class="header__menu-toggle">
+					<span>Menu</span>
+				</a>
+
+			</header>
+			<!-- end s-header -->
+
+
+			<!-- search
+																																																																																																        ================================================== -->
+			<div class="s-search">
+
+				<div class="search-block">
+
+					<form role="search" method="get" class="search-form" action="/search">
+						<label>
+							<span class="hide-content">Search for:</span>
+							<input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+						</label>
+						<input type="submit" class="search-submit" value="Search">
+					</form>
+
+					<a href="#0" title="Close Search" class="search-close">Close</a>
+
+				</div>
+				<!-- end search-block -->
+
+				<!-- search modal trigger -->
+				<a href="#0" class="search-trigger">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+						<path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"></path>
+					</svg>
+					<span>Search</span>
+				</a>
+				<span class="search-line"></span>
+
+			</div>
+			<!-- end s-search -->
+
+
+			<!-- site content
+																																																																																																        ================================================== -->
+			<div class="s-content"> {% block body %}{% endblock %}
+				<div class="masonry-wrap">
+
+					<div class="masonry" style="position: relative; height: 5620.81px;">
+
+						<div class="grid-sizer"></div>
+						{% block articles %}{% endblock %}
+
+					</div>
+					<!-- end masonry -->
+
+				</div>
+				<!-- end masonry-wrap -->
+
+				{# <div class="row">
+																																																																	<div class="column large-full">
+																																																																		<nav class="pgn">
+																																																																			<ul>
+																																																																				<li>
+																																																																					<a class="pgn__prev" href="#0">Prev</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__num" href="#0">1</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<span class="pgn__num current">2</span>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__num" href="#0">3</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__num" href="#0">4</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__num" href="#0">5</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<span class="pgn__num dots">…</span>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__num" href="#0">8</a>
+																																																																				</li>
+																																																																				<li>
+																																																																					<a class="pgn__next" href="#0">Next</a>
+																																																																				</li>
+																																																																			</ul>
+																																																																		</nav>
+																																																																	</div>
+																																																																</div> #}
+
+			</div>
+			<footer class="s-footer">
+				<div class="row">
+					<div class="column large-full footer__content">
+						<div class="footer__copyright">
+							<span>© Copyright Typerite 2021</span>
+							<span>Design by
+								<a href="https://www.styleshout.com/">StyleShout</a>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="go-top">
+					<a class="smoothscroll" title="Back to Top" href="#top"></a>
+				</div>
+			</footer>
+
+		</div>
+		 <script src="/js/jquery-3.2.1.min.js"></script>
+	 <script src="/js/plugins.js"></script>
+		 <script src="/js/main.js"></script>
+	</body>
+</html>

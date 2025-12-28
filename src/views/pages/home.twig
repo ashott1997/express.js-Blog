@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block articles %}
+	{% for post in posts %}
+		<article class="masonry__brick entry format-standard" style="position: absolute; left: 0%; top: 0px;">
+
+			<div class="entry__thumb">
+				<a href="/post/{{ post.slug }}" class="entry__thumb-link">
+					<img src="{{ post.thumbnail }}">
+				</a>
+			</div>
+
+			<div class="entry__text">
+				<div class="entry__header">
+
+					<h2 class="entry__title">
+						<a href="/post/{{ post.slug }}">{{ post.title }}</a>
+					</h2>
+					<div class="entry__meta">
+						<span class="entry__meta-cat">
+							<a href="category.html">Design</a>
+							<a href="category.html">Photography</a>
+						</span>
+						<span class="entry__meta-date">
+							<a href="single-standard.html">{{ post.date }}</a>
+						</span>
+					</div>
+
+				</div>
+				<div class="entry__excerpt">
+					<p>
+						{{ post.body|truncate(100) }}
+					</p>
+				</div>
+			</div>
+
+		</article>
+	{% endfor %}
+{% endblock %}
